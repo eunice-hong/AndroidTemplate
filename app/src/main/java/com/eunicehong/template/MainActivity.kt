@@ -14,20 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.eunicehong.template.core.model.note.Note
+import com.eunicehong.template.core.data.repository.note.NoteRepositoryImpl
 import com.eunicehong.template.ui.theme.AndroidTemplateTheme
 
 class MainActivity : ComponentActivity() {
     /**
      * TODO(@eunice-hong): Remove this placeholder note.
      */
-    private val note =
-        Note(
-            id = 1,
-            userName = "Eunice",
-            content = "Hello, World!",
-            createdAt = System.currentTimeMillis(),
-        )
+    private val notes = NoteRepositoryImpl().getNotes().shuffled()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,14 +31,14 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(
                         modifier =
-                            Modifier
-                                .padding(innerPadding)
-                                .fillMaxSize(),
+                        Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
                     ) {
                         Greeting(
-                            name = note.userName,
+                            name = notes.firstOrNull()?.userName ?: "No name",
                             modifier =
                                 Modifier
                                     .padding(innerPadding),
