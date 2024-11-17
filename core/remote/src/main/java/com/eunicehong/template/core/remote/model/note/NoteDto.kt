@@ -10,7 +10,7 @@ import java.util.Locale
  * [Note] DTO
  */
 @Serializable
-data class NoteDto(
+internal data class NoteDto(
     @SerialName("id")
     val id: Long,
     @SerialName("creator_uid")
@@ -24,7 +24,7 @@ data class NoteDto(
     val updatedAt: String,
 )
 
-fun NoteDto.toEntity(): Note {
+internal fun NoteDto.toEntity(): Note {
     val timeMillis = convertToLongUsingSimpleDateFormat(createdAt)
     return Note(
         id = id,
