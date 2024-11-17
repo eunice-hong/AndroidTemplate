@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.eunicehong.template.core.data"
+    namespace = "com.eunicehong.template.core.auth"
     compileSdk = 35
 
     defaultConfig {
@@ -24,19 +24,20 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 }
 
 dependencies {
-    implementation(projects.core.model)
-    implementation(projects.core.auth)
 
     implementation(libs.androidx.core.ktx)
+
+    implementation(platform(libs.google.firebase.bom))
+    implementation(libs.google.firebase.auth)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
