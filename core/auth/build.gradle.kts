@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.android.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -38,6 +40,9 @@ dependencies {
 
     implementation(platform(libs.google.firebase.bom))
     implementation(libs.google.firebase.auth)
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
