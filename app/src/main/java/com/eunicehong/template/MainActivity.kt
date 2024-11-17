@@ -15,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.eunicehong.template.core.data.repository.note.NoteRepositoryImpl
-import com.eunicehong.template.ui.theme.AndroidTemplateTheme
+import com.eunicehong.template.core.ui.theme.AndroidTemplateTheme
 
 class MainActivity : ComponentActivity() {
     /**
