@@ -5,12 +5,10 @@ import com.eunicehong.template.core.auth.EuniceAuthentication
 /**
  * 인증 관련 데이터 처리
  */
-class AuthRepositoryImpl(
+internal class AuthRepositoryImpl(
     private val auth: EuniceAuthentication,
 ) : AuthRepository {
-    override suspend fun signInAnonymously(): String? {
-        return auth.signInAnonymously()
-    }
+    override suspend fun signInAnonymously(): String? = auth.signInAnonymously()
 
     override fun signOut() {
         auth.signOut()
