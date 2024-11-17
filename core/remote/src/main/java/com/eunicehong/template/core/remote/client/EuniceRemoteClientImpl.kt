@@ -40,7 +40,6 @@ class EuniceRemoteClientImpl : EuniceRemoteClient {
         userName: String,
         content: String,
     ) {
-        val now = System.currentTimeMillis()
         val result =
             supabase.postgrest
                 .from("notes")

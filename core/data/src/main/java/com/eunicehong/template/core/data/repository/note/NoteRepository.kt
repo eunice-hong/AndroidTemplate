@@ -9,5 +9,10 @@ interface NoteRepository {
     /**
      * 방명록 목록을 가져옵니다.
      */
-    fun getNotes(): List<Note>
+    suspend fun getNotes(): List<Note>
+
+    suspend fun createNote(
+        userName: String,
+        content: String,
+    )
 }

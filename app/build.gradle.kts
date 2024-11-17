@@ -54,6 +54,7 @@ dependencies {
     implementation(projects.core.model)
     implementation(projects.core.data)
     implementation(projects.core.ui)
+    implementation(projects.core.remote) // TODO(@eunice-hong): Hilt 적용 후 삭제.
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

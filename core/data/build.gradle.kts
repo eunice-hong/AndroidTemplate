@@ -35,6 +35,7 @@ android {
 dependencies {
     implementation(projects.core.model)
     implementation(projects.core.auth)
+    implementation(projects.core.remote)
 
     implementation(libs.androidx.core.ktx)
 
