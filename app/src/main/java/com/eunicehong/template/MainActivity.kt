@@ -14,9 +14,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.eunicehong.template.core.model.note.Note
 import com.eunicehong.template.ui.theme.AndroidTemplateTheme
 
 class MainActivity : ComponentActivity() {
+    /**
+     * TODO(@eunice-hong): Remove this placeholder note.
+     */
+    private val note =
+        Note(
+            id = 1,
+            userName = "Eunice",
+            content = "Hello, World!",
+            createdAt = System.currentTimeMillis(),
+        )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,7 +44,7 @@ class MainActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.Center,
                     ) {
                         Greeting(
-                            name = "Eunice Template",
+                            name = note.userName,
                             modifier =
                                 Modifier
                                     .padding(innerPadding),
