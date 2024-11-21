@@ -11,18 +11,45 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.eunicehong.template.ui.theme.AndroidTemplateTheme
+import com.eunicehong.template.core.data.repository.note.NoteRepositoryImpl
+import com.eunicehong.template.core.model.note.Note
+import com.eunicehong.template.core.remote.client.EuniceRemoteClientImpl
+import com.eunicehong.template.core.ui.theme.AndroidTemplateTheme
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
+    /**
+     * TODO(@eunice-hong): Remove this placeholder note.
+     */
+    private val noteRepository by lazy {
+        NoteRepositoryImpl(
+            euniceRemoteClient = EuniceRemoteClientImpl(),
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             AndroidTemplateTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    var notes by remember { mutableStateOf<List<Note>>(listOf()) }
+
+                    LaunchedEffect(this@MainActivity) {
+                        withContext(Dispatchers.Main) {
+                            notes = noteRepository.getNotes().shuffled()
+                        }
+                    }
+
                     Column(
                         modifier =
                             Modifier
@@ -32,7 +59,7 @@ class MainActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.Center,
                     ) {
                         Greeting(
-                            name = "Eunice Template",
+                            name = notes.firstOrNull()?.userName ?: "No name",
                             modifier =
                                 Modifier
                                     .padding(innerPadding),

@@ -1,4 +1,4 @@
-package com.eunicehong.template.ui.theme
+package com.eunicehong.template.core.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
