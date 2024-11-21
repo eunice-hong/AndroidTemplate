@@ -19,22 +19,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.eunicehong.template.core.data.repository.note.NoteRepositoryImpl
+import com.eunicehong.template.core.data.repository.note.NoteRepository
 import com.eunicehong.template.core.model.note.Note
-import com.eunicehong.template.core.remote.client.EuniceRemoteClientImpl
 import com.eunicehong.template.core.ui.theme.AndroidTemplateTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    /**
-     * TODO(@eunice-hong): Remove this placeholder note.
-     */
-    private val noteRepository by lazy {
-        NoteRepositoryImpl(
-            euniceRemoteClient = EuniceRemoteClientImpl(),
-        )
-    }
+    @Inject
+    lateinit var noteRepository: NoteRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

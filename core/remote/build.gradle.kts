@@ -9,6 +9,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     kotlin("plugin.serialization") version libs.versions.kotlin
+    alias(libs.plugins.kotlin.android.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -58,6 +60,9 @@ dependencies {
     implementation(projects.core.model)
 
     implementation(libs.androidx.core.ktx)
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     implementation(platform(libs.jan.tennert.supabase.bom))
     implementation(libs.jan.tennert.supabase.postgrest)

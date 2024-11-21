@@ -10,12 +10,10 @@ import kotlinx.coroutines.tasks.await
  * Firebase Authentication을 사용하여 로그인/로그아웃을 수행하는 구현체입니다.
  *
  * @param auth Firebase Authentication 인스턴스
- * TODO(@eunice-hong): 생성자 주입을 사용하여 FirebaseAuth 인스턴스를 주입받도록 수정합니다.
  */
-class EuniceAuthenticationImpl(
+internal class EuniceAuthenticationImpl(
     private val auth: FirebaseAuth = Firebase.auth,
 ) : EuniceAuthentication {
-
     override suspend fun signInAnonymously(): String? {
         val result = auth.signInAnonymously().await()
         return when (val user = result.user) {
