@@ -30,6 +30,11 @@
             android:exported="true"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AndroidTemplate" />
+        <activity
+            android:name=".note.edit.NoteEditorActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AndroidTemplate" />
     </application>
 
 </manifest>
