@@ -43,8 +43,8 @@ internal class EuniceRemoteClientImpl(
                 .from("notes")
                 .insert(
                     value =
-                        listOf(
-                            "user_id" to "1",
+                        mapOf(
+                            "creator_uid" to "1",
                             "user_name" to userName,
                             "content" to content,
                         ),
