@@ -8,6 +8,8 @@ import com.eunicehong.template.core.auth.EuniceAuthentication
 internal class AuthRepositoryImpl(
     private val auth: EuniceAuthentication,
 ) : AuthRepository {
+    override suspend fun getUserId(): String = auth.getUserId()
+
     override suspend fun signInAnonymously(): String? = auth.signInAnonymously()
 
     override fun signOut() {

@@ -14,6 +14,8 @@ import kotlinx.coroutines.tasks.await
 internal class EuniceAuthenticationImpl(
     private val auth: FirebaseAuth = Firebase.auth,
 ) : EuniceAuthentication {
+    override suspend fun getUserId(): String = auth.currentUser?.uid ?: signInAnonymously() ?: ""
+
     override suspend fun signInAnonymously(): String? {
         val result = auth.signInAnonymously().await()
         return when (val user = result.user) {
