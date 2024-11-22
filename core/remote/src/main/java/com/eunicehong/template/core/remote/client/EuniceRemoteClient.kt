@@ -24,6 +24,7 @@ interface EuniceRemoteClient {
      * @param content 내용
      */
     suspend fun createNote(
+        creatorUid: String,
         userName: String,
         content: String,
     )

@@ -35,6 +35,7 @@ internal class EuniceRemoteClientImpl(
             .toEntity()
 
     override suspend fun createNote(
+        creatorUid: String,
         userName: String,
         content: String,
     ) {
@@ -44,7 +45,7 @@ internal class EuniceRemoteClientImpl(
                 .insert(
                     value =
                         mapOf(
-                            "creator_uid" to "1",
+                            "creator_uid" to creatorUid,
                             "user_name" to userName,
                             "content" to content,
                         ),
