@@ -11,6 +11,7 @@ plugins {
     kotlin("plugin.serialization") version libs.versions.kotlin
     alias(libs.plugins.kotlin.android.ksp)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.gms.service)
 }
 
 android {
