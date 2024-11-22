@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -61,8 +62,11 @@ class NoteDetailActivity : ComponentActivity() {
                                 Icon(
                                     Icons.AutoMirrored.Filled.ArrowBack,
                                     contentDescription = "Back",
-                                    modifier = Modifier.padding(16.dp),
-                                )
+                                    modifier =
+                                        Modifier
+                                            .padding(16.dp)
+                                            .clickable { finish() },
+                                        )
                             },
                             title = {
                                 Text(
