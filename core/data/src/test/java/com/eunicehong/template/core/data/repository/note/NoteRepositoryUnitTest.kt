@@ -34,6 +34,7 @@ class NoteRepositoryUnitTest {
     fun noteRepository_createNote() =
         runTest {
             noteRepository.createNote(
+                creatorUid = "eunice",
                 userName = "Eunice",
                 content = "Hello, World!",
             )

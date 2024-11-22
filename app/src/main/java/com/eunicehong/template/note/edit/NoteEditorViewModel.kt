@@ -4,6 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.eunicehong.template.core.data.repository.auth.AuthRepository
 import com.eunicehong.template.core.data.repository.note.NoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,6 +16,7 @@ import javax.inject.Inject
 class NoteEditorViewModel
     @Inject
     constructor(
+        private val authRepository: AuthRepository,
         private val noteRepository: NoteRepository,
     ) : ViewModel() {
         /**
@@ -53,6 +55,7 @@ class NoteEditorViewModel
                 false
             } else {
                 noteRepository.createNote(
+                    creatorUid = authRepository.getUserId(),
                     userName = userName,
                     content = content,
                 )

@@ -17,6 +17,7 @@ interface NoteRepository {
     suspend fun getNote(id: Long): Note
 
     suspend fun createNote(
+        creatorUid: String,
         userName: String,
         content: String,
     )

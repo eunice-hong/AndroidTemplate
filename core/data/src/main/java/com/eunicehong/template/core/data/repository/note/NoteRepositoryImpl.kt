@@ -14,7 +14,12 @@ internal class NoteRepositoryImpl(
     override suspend fun getNote(id: Long): Note = euniceRemoteClient.getNoteDetail(id)
 
     override suspend fun createNote(
+        creatorUid: String,
         userName: String,
         content: String,
-    ) = euniceRemoteClient.createNote(userName, content)
+    ) = euniceRemoteClient.createNote(
+        creatorUid,
+        userName,
+        content,
+    )
 }
