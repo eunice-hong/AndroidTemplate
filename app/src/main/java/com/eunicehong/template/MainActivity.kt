@@ -1,5 +1,6 @@
 package com.eunicehong.template
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -28,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.eunicehong.template.core.ui.note.NoteList
 import com.eunicehong.template.core.ui.theme.AndroidTemplateTheme
+import com.eunicehong.template.note.detail.NoteDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -96,26 +98,9 @@ class MainActivity : ComponentActivity() {
                         notes = noteList.value,
                         innerPadding = innerPadding,
                         onClickNote = { note ->
-                            coroutineScope.launch {
-                                // TODO(@eunice-hong): Open note detail screen
-                                val result =
-                                    snackBarHostState.showSnackbar(
-                                        "${note.userName} 님의 메모",
-                                        "확인",
-                                        withDismissAction = false, // 스낵바의 확인 버튼을 보여줄지 여부
-                                        SnackbarDuration.Short, // 스낵바 보여주는 시간
-                                    )
-
-                                when (result) {
-                                    SnackbarResult.Dismissed -> {
-                                        Log.d("snackBar", "snackBar: 스낵바 닫힘")
-                                    }
-
-                                    SnackbarResult.ActionPerformed -> {
-                                        Log.d("snackBar", "snackBar: 확인 버튼 눌림")
-                                    }
-                                }
-                            }
+                            val detailIntent = Intent(baseContext, NoteDetailActivity::class.java)
+                            detailIntent.putExtra("id", note.id)
+                            startActivity(detailIntent)
                         },
                     )
                 }
