@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.eunicehong.template.R
+import com.eunicehong.template.core.ui.note.NoteDetail
 import com.eunicehong.template.core.ui.theme.AndroidTemplateTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -72,15 +73,9 @@ class NoteDetailActivity : ComponentActivity() {
                         )
                     },
                 ) { innerPadding ->
-                    Text(
-                        // TODO(@eunice-hong): 상세 화면 구현
-                        text = note?.content ?: "",
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onBackground,
-                        modifier =
-                        Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding),
+                    NoteDetail(
+                        note = note ?: return@Scaffold,
+                        innerPadding = innerPadding,
                     )
                 }
             }

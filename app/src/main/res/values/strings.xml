@@ -2,5 +2,4 @@
     <string name="app_name">Eunice Template</string>
     <string name="main_title">Visitor\'s Note</string>
     <string name="note_detail_title">%1$s\'s Note</string>
-    <string name="note_detail_creator_name">From: %1$s</string>
 </resources>
