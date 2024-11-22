@@ -6,6 +6,8 @@ import com.eunicehong.template.core.remote.model.note.NoteDto
 import com.eunicehong.template.core.remote.model.note.toEntity
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.postgrest.query.FilterOperation
+import io.github.jan.supabase.postgrest.query.FilterOperator
 import javax.inject.Singleton
 
 /**
@@ -21,6 +23,16 @@ internal class EuniceRemoteClientImpl(
             .select()
             .decodeList<NoteDto>()
             .map { it.toEntity() }
+
+    override suspend fun getNoteDetail(id: Long): Note =
+        supabase.postgrest
+            .from("notes")
+            .select {
+                filter(
+                    FilterOperation("id", FilterOperator.EQ, id.toString()),
+                )
+            }.decodeSingle<NoteDto>()
+            .toEntity()
 
     override suspend fun createNote(
         userName: String,
