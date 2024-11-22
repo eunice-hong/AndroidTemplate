@@ -11,6 +11,8 @@ internal class NoteRepositoryImpl(
 ) : NoteRepository {
     override suspend fun getNotes(): List<Note> = euniceRemoteClient.getNoteList()
 
+    override suspend fun getNote(id: Long): Note = euniceRemoteClient.getNoteDetail(id)
+
     override suspend fun createNote(
         userName: String,
         content: String,

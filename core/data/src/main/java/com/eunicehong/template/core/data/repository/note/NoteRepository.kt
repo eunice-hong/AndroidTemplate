@@ -11,6 +11,11 @@ interface NoteRepository {
      */
     suspend fun getNotes(): List<Note>
 
+    /**
+     * 방명록 상세 정보를 가져옵니다.
+     */
+    suspend fun getNote(id: Long): Note
+
     suspend fun createNote(
         userName: String,
         content: String,
