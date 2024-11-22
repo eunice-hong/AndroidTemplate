@@ -22,6 +22,9 @@ class EuniceRemoteClientFake : EuniceRemoteClient {
 
     override suspend fun getNoteList(): List<Note> = noteList
 
+    override suspend fun getNoteDetail(id: Long): Note =
+        noteList.find { it.id == id } ?: throw IllegalArgumentException("Not found")
+
     override suspend fun createNote(
         userName: String,
         content: String,

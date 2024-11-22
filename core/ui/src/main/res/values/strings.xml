@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="note_detail_creator_name">From: %1$s</string>
+    <string name="note_editor_creator_name_input_label">Enter your name</string>
+    <string name="note_editor_creator_name_input_hint">John Doe</string>
+    <string name="note_editor_content_input_label">Say hello to Eunice.</string>
+    <string name="note_editor_content_input_hint">Hello, Eunice!</string>
+</resources>

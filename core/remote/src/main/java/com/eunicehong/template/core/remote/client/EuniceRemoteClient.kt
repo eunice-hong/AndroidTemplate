@@ -12,6 +12,11 @@ interface EuniceRemoteClient {
     suspend fun getNoteList(): List<Note>
 
     /**
+     * 노트 상세 정보를 가져옵니다.
+     */
+    suspend fun getNoteDetail(id: Long): Note
+
+    /**
      * 노트를 생성합니다.
      *
      * @param userName 사용자 이름

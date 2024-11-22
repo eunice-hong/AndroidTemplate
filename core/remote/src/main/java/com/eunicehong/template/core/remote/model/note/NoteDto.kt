@@ -39,6 +39,6 @@ internal fun NoteDto.toEntity(): Note {
  */
 private fun convertToLongUsingSimpleDateFormat(dateString: String): Long {
     val formattedDateString = dateString.replace("Z", "+00:00").replace(":", "")
-    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HHmmss+SSSS", Locale.getDefault())
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HHmmss.SSSSZ", Locale.getDefault())
     return dateFormat.parse(formattedDateString)?.time ?: 0L
 }
