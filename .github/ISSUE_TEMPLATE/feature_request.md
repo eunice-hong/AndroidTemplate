@@ -2,7 +2,7 @@
 name: "Feature Request"
 about: "새로운 기능 요청 또는 기존 기능 개선"
 title: "[Feature] 기능 이름"
-labels: feature
+labels: ISSUE:feature
 assignees: eunice-hong
 ---
 

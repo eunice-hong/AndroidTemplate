@@ -2,7 +2,7 @@
 name: "Task Management"
 about: "작업 일정과 진행 상태 관리"
 title: "[Task] 작업 이름"
-labels: task
+labels: ISSUE:task
 assignees: eunice-hong
 ---
 
