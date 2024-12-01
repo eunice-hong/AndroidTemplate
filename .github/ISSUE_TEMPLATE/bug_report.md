@@ -2,8 +2,8 @@
 name: "Bug Report"
 about: "발생한 문제를 보고합니다"
 title: "[Bug] 문제 설명"
-labels: bug
-assignees: @eunice-hong
+labels: ISSUE:bug
+assignees: eunice-hong
 ---
 
 ## 🐛 문제 설명

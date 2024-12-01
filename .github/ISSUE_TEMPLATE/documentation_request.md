@@ -2,8 +2,8 @@
 name: "Documentation Request"
 about: "문서 작성 또는 업데이트 요청"
 title: "[Docs] 문서 제목"
-labels: documentation
-assignees: @eunice-hong
+labels: ISSUE:documentation
+assignees: eunice-hong
 ---
 
 ## 📝 문서 작성 요청
