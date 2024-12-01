@@ -3,7 +3,7 @@ name: "Design Task"
 about: "UI/UX 디자인 요청"
 title: "[Design] 작업 항목 제목"
 labels: design
-assignees: @eunice-hong
+assignees: eunice-hong
 ---
 
 ## 🎨 디자인 개요
