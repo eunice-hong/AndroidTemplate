@@ -40,6 +40,8 @@ dependencies {
     implementation(projects.core.remote)
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.coroutines.core)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)

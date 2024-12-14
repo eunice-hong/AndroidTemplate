@@ -3,7 +3,6 @@ package com.eunicehong.template
 import androidx.lifecycle.ViewModel
 import com.eunicehong.template.core.data.repository.note.NoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 /**
@@ -13,13 +12,10 @@ import javax.inject.Inject
 class NoteViewModel
     @Inject
     constructor(
-        private val noteRepository: NoteRepository,
+        noteRepository: NoteRepository,
     ) : ViewModel() {
         /**
          * 노트 목록을 가져오는 Flow
          */
-        val noteList =
-            flow {
-                emit(noteRepository.getNotes())
-            }
+        val noteList = noteRepository.getNotes()
     }

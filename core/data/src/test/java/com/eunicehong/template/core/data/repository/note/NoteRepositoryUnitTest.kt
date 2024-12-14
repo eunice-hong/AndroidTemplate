@@ -1,6 +1,12 @@
 package com.eunicehong.template.core.data.repository.note
 
+import com.eunicehong.template.core.model.note.Note
+import com.eunicehong.template.core.model.result.Result
 import com.eunicehong.template.core.remote.client.EuniceRemoteClient
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -22,12 +28,18 @@ class NoteRepositoryUnitTest {
             )
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun noteRepository_getNotes() =
         runTest {
-            noteRepository.getNotes().forEach { note ->
-                assertEquals(true, note.content.isNotBlank())
+            val results = mutableListOf<Result<List<Note>>>()
+            backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
+                noteRepository.getNotes().toList(results)
             }
+
+            assert(results[0] is Result.Loading)
+            assert(results[1] is Result.Success)
+            assertEquals(2, (results[1] as? Result.Success<List<Note>>)?.data?.size)
         }
 
     @Test
