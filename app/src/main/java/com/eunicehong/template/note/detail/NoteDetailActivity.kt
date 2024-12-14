@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.eunicehong.template.R
+import com.eunicehong.template.core.model.result.Result
 import com.eunicehong.template.core.ui.note.NoteDetail
 import com.eunicehong.template.core.ui.theme.AndroidTemplateTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,7 +51,11 @@ class NoteDetailActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val note = noteDetailViewModel.note.collectAsState(null).value
+            val note =
+                when (val state = noteDetailViewModel.note.collectAsState().value) {
+                    is Result.Success -> state.data
+                    else -> null
+                }
             AndroidTemplateTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
@@ -63,10 +68,10 @@ class NoteDetailActivity : ComponentActivity() {
                                     Icons.AutoMirrored.Filled.ArrowBack,
                                     contentDescription = "Back",
                                     modifier =
-                                        Modifier
-                                            .padding(16.dp)
-                                            .clickable { finish() },
-                                        )
+                                    Modifier
+                                        .padding(16.dp)
+                                        .clickable { finish() },
+                                )
                             },
                             title = {
                                 Text(
